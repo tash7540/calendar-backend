@@ -5,6 +5,8 @@ import com.example.CalendarServer.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class EventController {
 
@@ -14,6 +16,11 @@ public class EventController {
     @PostMapping("/events")
     public Event saveEvent(@RequestBody Event event) {
         return eventService.saveEvent(event);
+    }
+
+    @GetMapping("/events")
+    public List<Event> getEvents(){
+        return eventService.getEvents();
     }
 
 }
