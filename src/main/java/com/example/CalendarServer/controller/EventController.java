@@ -5,6 +5,8 @@ import com.example.CalendarServer.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -22,7 +24,13 @@ public class EventController {
 
     @GetMapping("/events")
     public List<Event> getEvents(){
+
         return eventService.getEvents();
+
+    }
+    @GetMapping("/events/{id}")
+    public Event fetchEventById(@PathVariable("id") Long eventId) {
+        return eventService.fetchEventById(eventId);
     }
 
 }

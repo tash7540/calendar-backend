@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Event {
@@ -13,7 +14,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eventId;
     private String eventName;
-    private String eventTime;
+    private Date eventTime;
     private String eventNote;
 
     public Long getEventId() {
@@ -32,11 +33,11 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public String getEventTime() {
+    public Date getEventTime() {
         return eventTime;
     }
 
-    public void setEventTime(String eventTime) {
+    public void setEventTime(Date eventTime) {
         this.eventTime = eventTime;
     }
 
@@ -48,7 +49,7 @@ public class Event {
         this.eventNote = eventNote;
     }
 
-    public Event(Long eventId, String eventName, String eventTime, String eventNote) {
+    public Event(Long eventId, String eventName, Date eventTime, String eventNote) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventTime = eventTime;
@@ -68,4 +69,7 @@ public class Event {
                 ", eventNote='" + eventNote + '\'' +
                 '}';
     }
+
+
+
 }
