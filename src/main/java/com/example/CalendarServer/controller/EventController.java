@@ -40,8 +40,10 @@ public class EventController {
 
     }
 
-    @PutMapping("/events/{id}")
+    @PatchMapping("/events/{id}")
     public Event updateEvent(@PathVariable("id") Long eventId, @RequestBody Event event){
+        System.out.println(event);
+
         return eventService.updateEvent(eventId,event);
     }
 
