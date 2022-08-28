@@ -37,6 +37,12 @@ public class EventController {
     public String deleteEventById(@PathVariable("id") Long eventId){
         eventService.deleteEventById(eventId);
         return "Deleted Successfully";
+
+    }
+
+    @PutMapping("/events/{id}")
+    public Event updateEvent(@PathVariable("id") Long eventId, @RequestBody Event event){
+        return eventService.updateEvent(eventId,event);
     }
 
 }
