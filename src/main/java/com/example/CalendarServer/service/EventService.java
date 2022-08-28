@@ -11,4 +11,6 @@ public interface EventService {
     public List<Event> getEvents();
 
     public Event fetchEventById(Long eventId);
+
+    public void deleteEventById(Long eventId);
 }
