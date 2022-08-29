@@ -14,8 +14,9 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eventId;
     private String eventName;
-    private Date eventTime;
+    private Date eventDate;
     private String eventNote;
+    private String eventTime;
 
     public Long getEventId() {
         return eventId;
@@ -33,11 +34,11 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public Date getEventTime() {
+    public String getEventTime() {
         return eventTime;
     }
 
-    public void setEventTime(Date eventTime) {
+    public void setEventTime(String eventTime) {
         this.eventTime = eventTime;
     }
 
@@ -48,12 +49,20 @@ public class Event {
     public void setEventNote(String eventNote) {
         this.eventNote = eventNote;
     }
+    public Date getEventDate() {
+        return eventDate;
+    }
 
-    public Event(Long eventId, String eventName, Date eventTime, String eventNote) {
+    public void setEventDate(Date eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public Event(Long eventId, String eventName, Date eventDate, String eventNote,String eventTime) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventTime = eventTime;
         this.eventNote = eventNote;
+        this.eventDate=eventDate;
     }
 
     public Event() {
@@ -67,6 +76,8 @@ public class Event {
                 ", eventName='" + eventName + '\'' +
                 ", eventTime='" + eventTime + '\'' +
                 ", eventNote='" + eventNote + '\'' +
+                ", eventDate='" + eventDate + '\'' +
+
                 '}';
     }
 
