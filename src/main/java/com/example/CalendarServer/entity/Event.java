@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -13,9 +14,17 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long eventId;
+
+    @NotBlank(message="please add event name")
     private String eventName;
+
+    @NotBlank(message="please add event date")
     private Date eventDate;
+
+    @NotBlank(message="please add event note")
     private String eventNote;
+
+    @NotBlank(message="please add event time")
     private String eventTime;
 
     public Long getEventId() {

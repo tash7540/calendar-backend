@@ -1,12 +1,12 @@
 package com.example.CalendarServer.controller;
 
+import com.example.CalendarServer.error.EventNotFoundException;
 import com.example.CalendarServer.entity.Event;
 import com.example.CalendarServer.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -17,7 +17,7 @@ public class EventController {
     private EventService eventService;
 
     @PostMapping("/events")
-    public Event saveEvent(@RequestBody Event event) {
+    public Event saveEvent(@Valid @RequestBody Event event) {
         System.out.println(event);
         return eventService.saveEvent(event);
     }
@@ -29,7 +29,7 @@ public class EventController {
 
     }
     @GetMapping("/events/{id}")
-    public Event fetchEventById(@PathVariable("id") Long eventId) {
+    public Event fetchEventById(@PathVariable("id") Long eventId) throws EventNotFoundException {
         return eventService.fetchEventById(eventId);
     }
 

@@ -1,13 +1,14 @@
 package com.example.CalendarServer.service;
 
+import com.example.CalendarServer.error.EventNotFoundException;
 import com.example.CalendarServer.entity.Event;
 import com.example.CalendarServer.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class EventServiceImpl implements EventService{
@@ -27,8 +28,15 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event fetchEventById(Long eventId) {
-        return eventRepository.findById(eventId).get();
+    public Event fetchEventById(Long eventId) throws EventNotFoundException {
+        Optional<Event> event =
+                eventRepository.findById(eventId);
+
+        if(!event.isPresent()) {
+            throw new EventNotFoundException("Event Not Found");
+        }
+
+        return  event.get();
     }
 
     @Override

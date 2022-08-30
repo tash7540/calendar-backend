@@ -1,8 +1,8 @@
 package com.example.CalendarServer.service;
 
+import com.example.CalendarServer.error.EventNotFoundException;
 import com.example.CalendarServer.entity.Event;
 
-import java.util.Date;
 import java.util.List;
 
 public interface EventService {
@@ -10,7 +10,7 @@ public interface EventService {
 
     public List<Event> getEvents();
 
-    public Event fetchEventById(Long eventId);
+    public Event fetchEventById(Long eventId) throws EventNotFoundException;
 
     public void deleteEventById(Long eventId);
 
