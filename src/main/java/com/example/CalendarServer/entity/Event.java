@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 
 @Entity
@@ -18,13 +20,13 @@ public class Event {
     @NotBlank(message="please add event name")
     private String eventName;
 
-    @NotBlank(message="please add event date")
+    @NotNull(message="please add event date")
     private Date eventDate;
 
     @NotBlank(message="please add event note")
     private String eventNote;
 
-    @NotBlank(message="please add event time")
+    @NotNull(message="please add event time")
     private String eventTime;
 
     public Long getEventId() {
